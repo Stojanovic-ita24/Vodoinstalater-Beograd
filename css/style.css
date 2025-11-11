@@ -273,14 +273,17 @@ section { padding: 100px 10%; }
 .services-grid,
 .services-grid2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 35px;
+  justify-content: center;
   justify-items: center;
-  align-items: stretch;
-  max-width: 1200px;
+  align-items: start;
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
   padding-bottom: 60px;
 }
+
 
 .service-box {
   background: linear-gradient(145deg, #ffffff, #e6f0ff);
@@ -847,9 +850,71 @@ footer {
   }
 }
 
+/* === FLOATING CALL BUTTON === */
+.call-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #28a745;
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  line-height: 0;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  animation: pulseRing 2s infinite ease-out;
+}
+
+.call-button i {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+  animation: phoneShake 1.8s infinite ease-in-out;
+}
+
+.call-button:hover {
+  background-color: #22c55e;
+  transform: scale(1.1);
+}
+
+/* Efekat pulsiranja */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(40, 167, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+  }
+}
+
+.call-button {
+  animation: pulse 2s infinite;
+}
+
+
 @keyframes fadeMenu {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 1200px) {
+  .call-button {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    bottom: 35px;
+    right: 35px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -967,6 +1032,7 @@ footer {
   .btn {
     font-size: 1rem;
     padding: 8px 16px;
+    color: white;
   }
 
   .uslugenaslov, .section-title {
@@ -1009,11 +1075,19 @@ footer {
     width: 100%;
     max-width: 300px;
   }
+
+  .call-button {
+    width: 70px;
+    height: 70px;
+    font-size: 1.9rem;
+    bottom: 30px;
+    right: 30px;
+  }
 }
 
 @media (max-width: 480px) {
 
-   .contact-item {
+  .contact-item {
     width: 200px;
     padding: 25px 18px;
   }
@@ -1031,30 +1105,76 @@ footer {
     font-size: 0.9rem;
   }
 
-  .uslugenaslov, .section-title {
+  .uslugenaslov, 
+  .section-title {
     font-size: 1.8rem;
   }
 
-   .logo {
+  .logo {
     font-size: 1.2rem;
   }
+
+  /* HERO SEKCIJA – FULLSCREEN NA MOBILNOM */
   .hero {
-    height: 60vh;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+  }
+
+  .hero h1,
+  .hero p,
+  .hero .btn {
+    position: relative;
+    z-index: 1;
   }
 
   .hero h1 {
-    font-size: 2.1rem;
-    line-height: 1.1;
-    padding: 0 12px;
-    margin-bottom: 12px;
+    font-size: 2.4rem; /* povećano */
+    line-height: 1.25;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    margin-bottom: 18px;
   }
 
-  .btn {
-    font-size: 0.95rem;
-    padding: 7px 14px;
+  .hero p {
+    font-size: 1.1rem; /* povećano */
+    color: #e0e0e0;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 28px;
   }
 
-   .service-text h1 {
+  .hero .btn {
+    background-color: #ffb100;
+    color: white;
+    padding: 16px 34px; /* povećano dugme */
+    border-radius: 35px;
+    font-size: 1.1rem; /* povećan tekst */
+    font-weight: 700;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .hero .btn:hover {
+    transform: scale(1.08);
+    background-color: #ffd34d;
+  }
+
+  .service-text h1 {
     font-size: 1.6rem;
   }
 
@@ -1073,17 +1193,19 @@ footer {
 }
 
 @media (max-width: 420px) {
-  .services-grid {
+
+   .services-grid,
+  .services-grid2 {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 20px;
     justify-items: center;
-    padding: 20px 10px;
   }
 
   .service-box {
-    width: 90%;
-    max-width: 280px;
-    padding: 35px 15px;
+    width: 100%;
+    max-width: 260px;
+    padding: 30px 15px;
+    margin: 0 auto;
   }
 
   .service-box img {
@@ -1095,4 +1217,207 @@ footer {
   .service-box a {
     font-size: 0.9rem;
   }
+
+  section-title,
+  .uslugenaslov {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .contact-section {
+    padding: 50px 10px;
+  }
+
+  .contact-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+
+  .contact-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .contact-card {
+    width: 90%;
+    max-width: 260px;
+    padding: 20px 10px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .contact-card i {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+
+  .contact-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .contact-card p {
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
+
+  /* Floating call dugme — centrirano za male ekrane */
+  .call-button {
+    width: 60px;
+    height: 60px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .call-button i {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===  === */
+@media (max-width: 360px) {
+  .services-grid,
+  .services-grid2 {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    justify-items: center;
+  }
+
+  .service-box {
+    width: 90%;
+    max-width: 200px;
+    padding: 18px 8px;
+  }
+
+  .service-box img {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 12px;
+  }
+
+  .service-box {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .section-title,
+  .uslugenaslov {
+    font-size: 1.7rem;
+    margin-bottom: 25px;
+  }
+
+  .contact-card {
+    width: 95%;
+    max-width: 240px;
+    padding: 15px 8px;
+  }
+
+  .contact-card h3 {
+    font-size: 1rem;
+  }
+
+  .contact-card p {
+    font-size: 0.85rem;
+  }
+
+  .call-button {
+    width: 55px;
+    height: 55px;
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .call-button i {
+    font-size: 1.3rem;
+  }
+
+  
+ .hero h1 {
+    font-size: 2rem;
+    margin-bottom: 14px;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .hero .btn {
+    font-size: 1rem;
+    padding: 14px 28px;
+  }
+
+  .contact-item {
+    width: 180px;
+    padding: 20px 14px;
+  }
+
+  .contact-item img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .contact-item h3 {
+    font-size: 0.95rem;
+  }
+
+  .contact-item p {
+    font-size: 0.85rem;
+  }
+}
+
+
+/* === Najmanji uređaji=== */
+@media (max-width: 320px) {
+  .service-box {
+    width: 100%;
+    max-width: 200px;
+    padding: 18px 6px;
+  }
+
+  .service-box img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .service-box {
+    font-size: 0.9rem;
+  }
+
+  .section-title,
+  .uslugenaslov {
+    font-size: 1.6rem;
+  }
+
+  .services-grid,
+  .services-grid2 {
+    gap: 15px;
+  }
+
+  .contact-card {
+    width: 95%;
+    max-width: 200px;
+    padding: 12px 6px;
+  }
+
+  .contact-card h3 {
+    font-size: 0.8rem;
+  }
+
+  .contact-card p {
+    font-size: 0.7rem;
+  }
+
+  .call-button {
+    width: 50px;
+    height: 50px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .call-button i {
+    font-size: 1.2rem;
+  }
+  
 }
