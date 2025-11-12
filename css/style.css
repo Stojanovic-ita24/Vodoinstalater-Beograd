@@ -1308,11 +1308,15 @@ footer {
 
 @media (max-width: 400px) {
   .hero h1 {
-    font-size: 1.6rem;
-    line-height: 1.15;
-    max-width: 90%;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    max-width: 95%;
+    white-space: normal;
+    word-break: keep-all;
+    text-align: center;
   }
 }
+
 
 @media (max-width: 420px) {
   nav {
@@ -1439,13 +1443,15 @@ footer {
 
 @media (max-width: 340px) {
   .hero h1 {
-    font-size: 1.2rem;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-    word-break: normal;
-    white-space: normal;
-    text-align: center;
-  }
+  font-size: 1.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  word-break: keep-all;
+  white-space: normal;
+  text-align: center;
+  max-width: 95%;
+}
+
 
   .hero p {
     font-size: 0.85rem;
@@ -1517,4 +1523,11 @@ footer {
     font-size: 0.95rem;
   }
   
+}
+
+@media (max-width: 310px) {
+  .hero h1 {
+    font-size: 1.2rem;
+    line-height: 1.15;
+  }
 }
