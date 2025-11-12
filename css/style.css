@@ -1345,7 +1345,7 @@ footer {
   }
 
   .hero h1 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 1.2;
     max-width: 100%;
     white-space: normal;
@@ -1414,6 +1414,17 @@ footer {
   }
 }
 
+
+@media (min-width: 401px) and (max-width: 420px) {
+  .hero h1 {
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: -0.3px;   /* optičko izravnavanje */
+    transform: translateX(-1px); /* sitna kompenzacija pomeraja */
+  }
+}
 
 
 /* ===  === */
