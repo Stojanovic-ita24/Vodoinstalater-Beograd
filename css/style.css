@@ -196,10 +196,14 @@ nav ul {
 }
 
 .hero h1 {
-  font-size: 5rem;
-  color: white;
-  font-weight: 900;
-  margin-bottom: 40px;
+  word-break: keep-all;     
+  white-space: normal;       
+  overflow-wrap: normal;     
+  text-align: center;
+  display: inline-block;     
+  width: auto;
+  max-width: 95%;
+  margin: 0 auto 15px auto;
 }
 
 .btn {
@@ -1095,6 +1099,14 @@ footer {
   }
 }
 
+@media (max-width: 500px) {
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    max-width: 90%;
+  }
+}
+
 @media (max-width: 480px) {
 
   .contact-item {
@@ -1291,10 +1303,12 @@ footer {
     font-size: 1.5rem;
   }
 
-   .hero h1 {
-    font-size: 1.5rem;
-    line-height: 1.1;
-  } 
+  .hero h1 {
+    font-size: 1.8rem;
+    line-height: 1.15;
+    max-width: 92%;
+    letter-spacing: -0.3px;
+  }
 
   .hero p {
     font-size: 0.95rem;
@@ -1308,9 +1322,9 @@ footer {
 
 @media (max-width: 400px) {
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     line-height: 1.2;
-    max-width: 95%;
+    max-width: 90%;
     white-space: normal;
     word-break: keep-all;
     text-align: center;
@@ -1346,6 +1360,14 @@ footer {
 
   .nav-links {
     top: 70px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 1.6rem;
+    line-height: 1.15;
+    max-width: 95%;
   }
 }
 
@@ -1444,7 +1466,7 @@ footer {
 @media (max-width: 340px) {
   .hero h1 {
   font-size: 1.4rem;
-  line-height: 1.2;
+  line-height: 1.1;
   letter-spacing: -0.3px;
   word-break: keep-all;
   white-space: normal;
